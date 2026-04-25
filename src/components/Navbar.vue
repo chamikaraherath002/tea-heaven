@@ -1,5 +1,12 @@
 <template>
-  <nav style="padding: 10px; background: #8B4513; color: white;">
+  <div>
     <h2>Tea Heaven</h2>
-  </nav>
+    <p>Cart: {{ cart.length }}</p>
+  </div>
 </template>
+
+<script setup>
+defineProps({
+  cart: Array
+})
+</script>
