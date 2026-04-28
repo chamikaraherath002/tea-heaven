@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import TeaCard from './TeaCard.vue'
+import TeaModal from './TeaModal.vue'
 
 interface Tea {
   id: number
@@ -18,11 +19,11 @@ const teas = ref<Tea[]>([])
 const search = ref('')
 const loading = ref(true)
 const selectedCategory = ref('all')
+const selectedTea = ref<Tea | null>(null)  // ← for modal
 
 onMounted(async () => {
   const res = await fetch('https://dummyjson.com/products?limit=10')
   const data = await res.json()
-  console.log('API data:', data) // ADD THIS
 
   teas.value = data.products.map((item: any) => ({
     id: item.id,
@@ -32,7 +33,6 @@ onMounted(async () => {
     category: item.category
   }))
 
-  console.log('Teas loaded:', teas.value) // ADD THIS
   loading.value = false
 })
 
@@ -68,7 +68,11 @@ const filteredTeas = computed(() => {
         :key="item.id"
         :tea="item"
         :addToCart="props.addToCart"
+        @click="selectedTea = item"
       />
     </div>
+
+    <!-- Modal -->
+    <TeaModal :tea="selectedTea" @close="selectedTea = null" />
   </div>
 </template>
