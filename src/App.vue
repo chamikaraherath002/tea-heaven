@@ -1,11 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import Navbar from './components/Navbar.vue'
-import TeaList from './components/TeaList.vue'
 
-const cart = ref([])
+const cart = ref<any[]>([])
 
-function addToCart(item) {
+function addToCart(item: any) {
   cart.value.push(item)
 }
 </script>
@@ -13,9 +12,8 @@ function addToCart(item) {
 <template>
   <div>
     <Navbar :cart="cart" />
-
-    <h1>Welcome to Tea Heaven 🍵</h1>
-
-    <TeaList :addToCart="addToCart" />
+    <RouterView v-slot="{ Component }">
+      <component :is="Component" :addToCart="addToCart" />
+    </RouterView>
   </div>
 </template>
