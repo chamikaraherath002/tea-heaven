@@ -30,7 +30,7 @@ defineEmits<{
       <p :class="isDark ? 'text-amber-400' : 'text-amber-900'" class="font-bold mb-3">{{ tea.price }} LKR</p>
       <button
         @click.stop.prevent="addToCart(tea)"
-        :class="isDark ? 'bg-amber-600 hover:bg-amber-500' : 'bg-amber-900 hover:bg-amber-700'"
+        :class="isDark ? 'bg-green-600 hover:bg-green-500' : 'bg-green-700 hover:bg-green-600'"
         class="text-white px-4 py-2 rounded-full transition-colors"
       >
         Add to Cart 🛒

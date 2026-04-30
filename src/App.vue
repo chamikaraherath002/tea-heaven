@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Navbar from './components/Navbar.vue'
+import type { Product } from './types'
 
-const cart = ref<any[]>([])
+const cart = ref<Product[]>([])
 const isDark = ref(false)
 
-function addToCart(item: any) {
+function addToCart(item: Product) {
   cart.value.push(item)
 }
 
@@ -15,7 +16,7 @@ function toggleDark() {
 </script>
 
 <template>
-  <div :class="isDark ? 'dark bg-gray-900 min-h-screen' : 'bg-gray-50 min-h-screen'">
+  <div :class="isDark ? 'bg-gray-900 min-h-screen' : 'bg-gray-50 min-h-screen'">
     <Navbar :cart="cart" :isDark="isDark" @toggleDark="toggleDark" />
     <RouterView v-slot="{ Component }">
       <component :is="Component" :addToCart="addToCart" :isDark="isDark" />

@@ -30,7 +30,7 @@ defineEmits<{
       <p :class="isDark ? 'text-gray-400' : 'text-gray-500'" class="text-sm mb-2 capitalize">Category: {{ tea.category }}</p>
       <button
         @click="$emit('close')"
-        :class="isDark ? 'bg-amber-600 hover:bg-amber-500' : 'bg-amber-900 hover:bg-amber-700'"
+        :class="isDark ? 'bg-green-600 hover:bg-green-500' : 'bg-green-700 hover:bg-green-600'"
         class="mt-4 w-full text-white py-2 rounded-full transition-colors"
       >
         Close
